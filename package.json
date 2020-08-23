@@ -1,0 +1,62 @@
+{
+  "name": "@homeservenow/serverless-event-mocks",
+  "version": "1.0.0",
+  "description": "Mocks for AWS Lambda Context/Events",
+  "main": "dist/serverless-event-mocks.js",
+  "umd:main": "dist/serverless-event-mocks.umd.js",
+  "module": "dist/serverless-event-mocks.mjs",
+  "files": [
+    "dist",
+    "readme.md"
+  ],
+  "dependencies": {
+    "@serverless/event-mocks": "^1.1.1"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.61",
+    "@types/jest": "^25.2.1",
+    "@typescript-eslint/eslint-plugin": "^2.24.0",
+    "@typescript-eslint/parser": "^2.0.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-typescript": "^7.2.1",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-formatter-pretty": "^3.0.1",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jest": "^23.8.2",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-unicorn": "^18.0.1",
+    "jest": "^25.3.0",
+    "microbundle": "^0.11.0",
+    "prettier": "^2.0.4",
+    "ts-jest": "^25.4.0",
+    "typescript": "^3.8.3"
+  },
+  "scripts": {
+    "build": "microbundle -o dist/ --sourcemap false --compress false",
+    "dev": "microbundle watch -o dist/ --sourcemap false --compress false",
+    "test": "jest --coverage",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexhayton/serverless-aws-mocks"
+  },
+  "keywords": [],
+  "jest": {
+    "testEnvironment": "node",
+    "testPathIgnorePatterns": [
+      "node_modules",
+      "dist",
+      "coverage"
+    ],
+    "transform": {
+      "^.+\\.ts?$": "ts-jest"
+    }
+  },
+  "author": "alexhayton",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alexhayton/serverless-aws-mocks/issues"
+  },
+  "homepage": "https://github.com/alexhayton/serverless-aws-mocks#readme"
+}
