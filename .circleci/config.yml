@@ -76,6 +76,7 @@ workflows:
           requires:
             - install
       - deploy:
+          context: npm-publish
           requires:
             - lint
             - test
