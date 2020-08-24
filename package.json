@@ -5,6 +5,7 @@
   "main": "dist/serverless-event-mocks.js",
   "umd:main": "dist/serverless-event-mocks.umd.js",
   "module": "dist/serverless-event-mocks.mjs",
+  "types": "dist/index.d.ts",
   "files": [
     "dist",
     "readme.md"
