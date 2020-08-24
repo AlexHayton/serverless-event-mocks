@@ -26,14 +26,14 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-unicorn": "^18.0.1",
     "jest": "^25.3.0",
-    "microbundle": "^0.11.0",
+    "microbundle": "^0.12.0",
     "prettier": "^2.0.4",
     "ts-jest": "^25.4.0",
     "typescript": "^3.8.3"
   },
   "scripts": {
-    "build": "microbundle -o dist/ --sourcemap false --compress false",
-    "dev": "microbundle watch -o dist/ --sourcemap false --compress false",
+    "build": "microbundle -o dist/ --compress false",
+    "dev": "microbundle watch -o dist/ --compress false",
     "test": "jest --coverage",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ."
   },
