@@ -1,4 +1,4 @@
-# @homeservenow/serverless-aws-mocks
+# @homeservenow/serverless-event-mocks
 
 This library exposes mock event factories for use in lambda tests. Each one accepts a partial event and fills in the rest of it with sensible defaults.
 
