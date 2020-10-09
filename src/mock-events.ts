@@ -30,7 +30,7 @@ export const createMockAPIGatewayEvent = (args?: MockApiGatewayEvent): APIGatewa
     isBase64Encoded: false,
     multiValueHeaders: {},
     multiValueQueryStringParameters: {},
-    path: "/hello",
+    path: "/",
     pathParameters: {},
     requestContext: {
       accountId: "123456789012",
