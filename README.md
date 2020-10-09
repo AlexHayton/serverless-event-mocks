@@ -21,4 +21,5 @@ expect(result.statusCode).toEqual(200);
 ## Documentation
 
 [createMockContext](src/mock-context.ts)
+
 [createMockAPIGatewayEvent](src/mock-events.ts)
