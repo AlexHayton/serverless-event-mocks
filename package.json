@@ -1,6 +1,6 @@
 {
   "name": "@homeservenow/serverless-event-mocks",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Mocks for AWS Lambda Context/Events",
   "main": "dist/serverless-event-mocks.js",
   "umd:main": "dist/serverless-event-mocks.umd.js",
