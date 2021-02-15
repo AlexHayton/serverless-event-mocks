@@ -1,9 +1,13 @@
 import createEvent from "@serverless/event-mocks";
-import { APIGatewayProxyEvent } from "aws-lambda";
+import {
+  APIGatewayProxyEvent,
+  DynamoDBRecord,
+  SQSRecord,
+} from "aws-lambda";
 
 const bodyHeaders = {
   "Content-Type": "application/json",
-}
+};
 
 export const isObject = (body: unknown): boolean => typeof body === "object";
 
@@ -17,13 +21,15 @@ export const serialiseBody = (body: unknown): string | null => {
   }
 
   return null;
-}
+};
 
 export interface MockApiGatewayEvent extends Partial<APIGatewayProxyEvent> {
-  body?: any, // eslint-disable-line @typescript-eslint/no-explicit-any
+  body?: any; // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
-export const createMockAPIGatewayEvent = (args?: MockApiGatewayEvent): APIGatewayProxyEvent =>
+export const createMockAPIGatewayEvent = (
+  args?: MockApiGatewayEvent
+): APIGatewayProxyEvent =>
   createEvent("aws:apiGateway", {
     headers: isObject(args?.body) ? bodyHeaders : {},
     httpMethod: "GET",
@@ -68,3 +74,55 @@ export const createMockAPIGatewayEvent = (args?: MockApiGatewayEvent): APIGatewa
     ...args,
     body: serialiseBody(args?.body),
   });
+
+  export interface MockSQSRecord extends Partial<SQSRecord> {
+    body?: any; // eslint-disable-line @typescript-eslint/no-explicit-any
+  }
+
+export const createMockSQSRecord = (args?: Partial<MockSQSRecord>): SQSRecord => ({
+  messageId: "4a74756e-4a37-404c-927f-242fd79b6f1e",
+  receiptHandle: "asd",
+  attributes: {
+    ApproximateReceiveCount: "32",
+    SentTimestamp: new Date().toISOString(),
+    SenderId: Math.floor(Math.random() * 100000).toString(),
+    ApproximateFirstReceiveTimestamp: new Date().toISOString(),
+  },
+  messageAttributes: {},
+  md5OfBody: "string",
+  eventSource: "string",
+  eventSourceARN: "string",
+  awsRegion: "string",
+  ...args,
+  body: serialiseBody(args?.body) || "",
+});
+
+export const createMockDynamoDBStreamRecord = (
+  args?: Partial<DynamoDBRecord>
+): DynamoDBRecord => ({
+  eventID: "1",
+  eventVersion: "1.0",
+  dynamodb: {
+    Keys: {
+      Id: {
+        N: "101",
+      },
+    },
+    NewImage: {
+      Message: {
+        S: "New item!",
+      },
+      Id: {
+        N: "101",
+      },
+    },
+    StreamViewType: "NEW_AND_OLD_IMAGES",
+    SequenceNumber: "111",
+    SizeBytes: 26,
+  },
+  awsRegion: "eu-west-2",
+  eventName: "INSERT",
+  eventSourceARN: "arn:aws:dynamodb:us-east-1:123456789012:table/images",
+  eventSource: "aws:dynamodb",
+  ...args,
+});
